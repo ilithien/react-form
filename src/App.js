@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import useForm from "./hooks/useForm";
+import TextInput from "./components/TextInput";
 
-function App() {
+export default function App() {
+  const { values, errors, handleFormEvent, submit } = useForm({
+    values: {
+      password: "",
+      username: "John"
+    },
+    onSubmit: values => console.log(values),
+    validate: true
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form className="login-form">
+        <TextInput
+          name="username"
+          value={values.username}
+          id="username"
+          errorMessage={errors.username}
+          validate={function(value) {
+            return value.startsWith("John")
+              ? null
+              : 'username should start with "John"';
+          }}
+          formEvent={handleFormEvent}
+        />
+        <TextInput
+          name="password"
+          value={values.password}
+          id="password"
+          type="password"
+          formEvent={handleFormEvent}
+        />
+
+        <button type="button" onClick={submit}>
+          Send!
+        </button>
+      </form>
     </div>
   );
 }
-
-export default App;
