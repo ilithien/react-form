@@ -6,3 +6,7 @@ It's known that working with forms in React could be a little verbose. I've crea
 
 - Input
 - Select
+
+### Usage
+
+This library is not ready to be used yet, but if you want to test it out you can clone the repository and start a simple demo with `yarn start`
