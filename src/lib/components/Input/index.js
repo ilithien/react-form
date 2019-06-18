@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import { FormActions } from "../hooks/useForm/formActions";
-import { FormContext } from "../hooks/useForm";
-import { controlPropTypes } from "../propTypes";
+import { FormActions } from "../../hooks/useForm/formActions";
+import { FormContext } from "../../hooks/useForm";
+import { controlPropTypes } from "../../propTypes";
 
-export default function Field({ name, validate, onChange, onBlur, ...rest }) {
+export default function Input({ name, validate, onChange, onBlur, ...rest }) {
   const [dirty, setDirty] = useState(false);
   const { formEvent, errors, values } = useContext(FormContext);
 
@@ -45,12 +45,12 @@ export default function Field({ name, validate, onChange, onBlur, ...rest }) {
   );
 }
 
-Field.defaultProps = {
+Input.defaultProps = {
   onChange: () => {},
   onBlur: () => {},
   validate: () => null
 };
 
-Field.propTypes = {
+Input.propTypes = {
   ...controlPropTypes
 };

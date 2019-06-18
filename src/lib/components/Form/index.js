@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { FormContext, useForm } from "../hooks/useForm";
-import { FormActions } from "../hooks/useForm/formActions";
+import { FormContext, useForm } from "../../hooks/useForm";
+import { FormActions } from "../../hooks/useForm/formActions";
 
 export default function Form({
   onSubmit = () => {},
